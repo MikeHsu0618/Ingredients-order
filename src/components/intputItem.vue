@@ -128,7 +128,7 @@
 <script setup>
 import {useInputItem} from "../compositables/useInputItem";
 import Button from "../components/button.vue"
-import {reactive, ref, toRefs} from "vue";
+import {reactive, ref, toRaw, toRefs} from "vue";
 
 const emit = defineEmits(['add-item', 'delete-item', 'edit-item'])
 

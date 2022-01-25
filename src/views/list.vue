@@ -6,23 +6,39 @@
 
       <div class="inline-block min-w-full align-middle border-b border-gray-200 shadow sm:rounded-lg">
         <table class="min-w-full">
-          <ListHead
-              :drop-down-list="dropDownList"
-          ></ListHead>
+          <ListHead></ListHead>
           <tbody class="bg-white">
           <InputItem
               @add-item="addItem"
           ></InputItem>
-          <template v-for="item in inputItems">
-            <ListItem
-                :isEdit=false
-                :listItem="item"
-                @delete-item="deleteItem"
-                @edit-item="editItem"
-            ></ListItem>
-          </template>
+
           </tbody>
         </table>
+        <draggable
+            class="list-group"
+            tag="transition-group"
+            :component-data="{
+          tag: 'ul',
+          type: 'transition-group',
+          name: !drag ? 'flip-list' : null
+        }"
+            v-model="inputItems"
+            v-bind="dragOptions"
+            @start="drag=true"
+            @end="drag=false"
+            item-key="id"
+        >
+          <template #item="{ element }">
+            <div >
+              <ListItem
+                  :isEdit=false
+                  :listItem="element"
+                  @delete-item="deleteItem"
+                  @edit-item="editItem"
+              ></ListItem>
+            </div>
+          </template>
+        </draggable>
       </div>
     </div>
   </div>
@@ -32,10 +48,17 @@
 import ListItem from '../components/listItem.vue'
 import InputItem from '../components/intputItem.vue'
 import ListHead from '../components/listHead.vue'
-import {onMounted, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import {useInputItem} from "../compositables/useInputItem";
+import draggable from "vuedraggable";
 
-const name = 'profile';
+const dragOptions = {
+  animation: 200,
+  group: "description",
+  disabled: false,
+  ghostClass: "ghost"
+}
+const drag = ref(false)
 
 const {
   inputItems,
@@ -45,22 +68,6 @@ const {
 } = useInputItem()
 
 // const childAddItem = () => listItem.value.emitAddItem()
-
-const dropDownList = [
-  {
-    name: '編輯',
-    active: false
-  },
-  {
-    name: '刪除',
-    active: false
-  },
-  {
-    name: '儲存',
-    active: false
-  }
-]
-
 
 </script>
 

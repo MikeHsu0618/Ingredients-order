@@ -1,7 +1,9 @@
 <template>
-  <tr :class="{'border-b': index === listItem.subItems.length - 1}" v-for="(subItem, index) in listItem.subItems">
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+  <ul
+      class="flex" style="cursor: move"
+      :class="{'border-b': index === listItem.subItems.length - 1}" v-for="(subItem, index) in listItem.subItems">
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit && index === 0">
         <input
             v-model="listItem.dish"
@@ -12,9 +14,9 @@
           v-if="!isEdit && index === 0"
           class="pl-3 text-sm leading-5 text-gray-500"> {{ listItem.dish }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit && index === 0">
         <input
             v-model="listItem.peopleNum"
@@ -25,9 +27,9 @@
           v-if="!isEdit && index === 0"
           class="text-sm leading-5 text-gray-500"> {{ listItem.peopleNum }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.ingredients"
@@ -38,9 +40,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.ingredients }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.potNum"
@@ -51,9 +53,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.potNum }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.boxNum"
@@ -64,9 +66,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.boxNum }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.kg"
@@ -77,9 +79,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.kg }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.total"
@@ -90,9 +92,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.total }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.unit"
@@ -103,9 +105,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.unit }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.supplier"
@@ -116,9 +118,9 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.supplier }}
       </div>
-    </td>
-    <td
-        class="px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-1 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
       <div class="mb-4" v-if="isEdit">
         <input
             v-model="subItem.note"
@@ -129,13 +131,13 @@
           v-else
           class="text-sm leading-5 text-gray-500"> {{ subItem.note }}
       </div>
-    </td>
-    <td
-        class="px-3 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
+    </li>
+    <li
+        class="w-100 px-3 py-1 text-sm leading-5 text-gray-500 whitespace-no-wrap border-gray-200">
 
-      <div class="relative" v-if="!isCreate && (index === 0)">
+      <div class="relative " style="width: 68px;cursor: pointer;" v-if="!isCreate && (index === 0)">
         <!-- Dropdown toggle button -->
-        <button class="block ml-2 p-2 bg-white bg-gray-100 rounded-md" @click="openDropDown = !openDropDown">
+        <button class="block ml-2 p-2 bg-white bg-gray-100 rounded-lg rounded-md" @click="openDropDown = !openDropDown">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
@@ -200,8 +202,8 @@
         > x
         </Button>
       </div>
-    </td>
-  </tr>
+    </li>
+  </ul>
 </template>
 
 <script setup>
@@ -242,6 +244,7 @@ const emitDelete = () => {
   emit("delete-item", props.listItem.id)
 }
 const emitAddItem = () => {
+  console.log('listItem')
   openDropDown.value = !openDropDown.value
   let item = toRaw(items)
   item.id = Math.random();
